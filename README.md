@@ -4,6 +4,14 @@ API REST para gerenciamento de tarefas, desenvolvida com os módulos nativos do 
 
 O serviço oferece operações de criação, consulta, atualização, conclusão e exclusão de tarefas. Os dados são persistidos em um arquivo JSON local, e a API pode ser consumida por aplicações web graças à configuração de CORS.
 
+## API em produção
+
+A coleção de tarefas publicada no Render está disponível em:
+
+### [https://tasks-api-ggyw.onrender.com/tasks](https://tasks-api-ggyw.onrender.com/tasks)
+
+A URL base `https://tasks-api-ggyw.onrender.com` não representa uma página visual e a rota raiz `/` não está implementada. A interface web do projeto está publicada em [https://tasks-front-seven.vercel.app](https://tasks-front-seven.vercel.app).
+
 ## Funcionalidades
 
 - Criação de tarefas com título obrigatório e descrição opcional
