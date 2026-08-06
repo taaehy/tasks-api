@@ -7,9 +7,10 @@ const DB_PATH = path.join(__dirname, 'tasks.json');
 
 export class Database {
   #tasks = [];
+  #ready;
 
   constructor() {
-    this.#load();
+    this.#ready = this.#load();
   }
 
   async #load() {
@@ -27,6 +28,8 @@ export class Database {
   }
 
   async list(filters = {}) {
+    await this.#ready;
+
     const { title, description } = filters;
     let tasks = [...this.#tasks];
 
@@ -46,16 +49,19 @@ export class Database {
   }
 
   async findById(id) {
+    await this.#ready;
     return this.#tasks.find(t => t.id === id) ?? null;
   }
 
   async create(task) {
+    await this.#ready;
     this.#tasks.push(task);
     await this.#persist();
     return task;
   }
 
   async update(id, data) {
+    await this.#ready;
     const index = this.#tasks.findIndex(t => t.id === id);
     if (index === -1) return null;
 
@@ -65,6 +71,7 @@ export class Database {
   }
 
   async delete(id) {
+    await this.#ready;
     const index = this.#tasks.findIndex(t => t.id === id);
     if (index === -1) return false;
 
